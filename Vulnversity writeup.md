@@ -2,13 +2,12 @@
  Challenge link: https://tryhackme.com/room/vulnversity 
 ## IP
 10.10.198.229
-
 ## Scans
 ### NMAP
 #### Command used:
 <code>$ nmap -sC -sV -Pn 10.10.198.229</code>
 #### Results
-"""
+<pre>
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-04-22 13:07 EDT
 Nmap scan report for 10.10.198.229
 Host is up (0.15s latency).
@@ -54,12 +53,14 @@ Host script results:
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 37.46 seconds
-"""
+</pre>
+
 ### GoBuster
 #### Command used:
 <code>$ gobuster dir -u http://10.10.198.229:3333/ -w /usr/share/wordlists/dirb/common.txt </code>
 #### Results
-"""
+
+<pre>
 ===============================================================
 Gobuster v3.1.0
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -88,16 +89,17 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 2022/04/22 13:44:28 Finished
 ===============================================================
-"""
+</pre>
+
 ## Ports Open
-"""
+<pre>
 21
 22
 139
 445
 3128
 3333
-"""
+</pre>
 
 ## Exploitation
 ### BurpSuite 
