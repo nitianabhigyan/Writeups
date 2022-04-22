@@ -1,5 +1,6 @@
 # Writeups
-Write-ups for some of the challenges do and truly like
+Write-ups for some of the challenges that I solved and truly like. 🫀
 
-## TryHackMe
-1. [Vulnversity writeup](./Vulnversity writeup.md)
+## TryHackMe Writeups
+
+[Vulnversity writeup](Vulnversity%20writeup.md)
