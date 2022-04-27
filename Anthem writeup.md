@@ -1,8 +1,9 @@
 # Anthem
-
+This writeup is more geared towards guiding a reader on how to approach this problem ( or at least the way i did), rather than just telling you the flags!
 ## IP address
-10.10.36.112
-NOTE: "In this room, you don't need to brute force any login page. Just your preferred browser and Remote Desktop."
+10.10.36.112<br>
+<b>NOTE</b>: The challenge description clearly states: 
+> "In this room, you don't need to brute force any login page. Just your preferred browser and Remote Desktop."
 ## Scans
 ### NMAP 
 #### Command used
@@ -81,9 +82,9 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
                                    
 </pre>
 
-### Random observations
+### Random but useful observations
 
-While browsing the pages (indicators: nmap scan and gobuster scan) we observe /http-robots.txt which contains intresting values such as: 
+While browsing the pages (indicators: nmap scan and gobuster scan) we observe /http-robots.txt which contains intresting values: 
 <pre>
 <b>UmbracoIsTheBest!</b>
 
@@ -96,22 +97,24 @@ Disallow: /umbraco/
 Disallow: /umbraco_client/
 </pre>
 
-Followed by a nice login page at : http://10.10.36.112/umbraco/#/login
-which asks 2 things:
-1. Username with a placeholder saying: <quote>"Your Username is usually your email"</quote>
+This is followed by a nice login page at : http://10.10.36.112/umbraco/#/login
+which asks for 2 things:
+1. Username with a placeholder saying: > "Your Username is usually your email"
 2. An obvious password field!
 
-Googling umbraco tells us that it is a CMS.
+Googling umbraco tells us that it is a **CMS**.
 
-Furthermore, <u>THOROUGHLY</u> inspecting the pages reveals a juicy detail: ""placeholder="Search... 								THM{G!T_G00D}" (present on all pages)
+Furthermore, <u>THOROUGHLY</u> inspecting the pages reveals  juicy details such as:
+> ""placeholder="Search... 								THM{---SNIPPED---}" 
 
 Reading and inspecting the blogs closely reveals a couple of things:
 1. there are at least 2 authors:
 	a. Jane Doe
 	b. James Orchard Halliwell 
-2. The "We are hiring" blog reveals the email id pattern "JD@anthem.com"
+
+2. The "We are hiring" blog reveals the email id pattern "JD@anthem.com" for the "company".
 3. it reveals a hiiden link in headers : http://10.10.36.112/rsd/1073 which opens a big can of worms of it's own!!!
-4. The poem is important! It is called "Solomon Grundy" :) do what you want with this.
+4. The poem is important! It is a nursery rhyme called "Solomon Grundy" :-) do what you want with this.
 <br>
 So we did manage to find 3/4 flags by just plain enumeration and inspection of the page.	
 For the last one, it's hard but you the power of meta !
@@ -119,20 +122,13 @@ For the last one, it's hard but you the power of meta !
 ## Exploitation and RDP
 
 ### RDP 
+Fairly staright forward.
 
-While logging in, remmeber you bases, short names are good and enumeration!
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+While logging in, remmeber you bases, short names are good and a strong enumeration goes long way!!!
 
-
-
+Other than that be "aware" of playing with file oermissions and maybe read up on your icacls.
+	
+	
+	
+	
+	
