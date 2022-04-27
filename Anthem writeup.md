@@ -105,7 +105,7 @@ which asks for 2 things:
 Googling umbraco tells us that it is a **CMS**.
 
 Furthermore, <u>THOROUGHLY</u> inspecting the pages reveals  juicy details such as:
-> ""placeholder="Search... 								THM{---SNIPPED---}" 
+> "placeholder="Search... 								THM{---SNIPPED---}" 
 
 Reading and inspecting the blogs closely reveals a couple of things:
 1. there are at least 2 authors:
