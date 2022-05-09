@@ -1,5 +1,6 @@
 # Anthem
-This writeup is more geared towards guiding a reader on how to approach this problem ( or at least the way i did), rather than just telling you the flags!
+This writeup is more geared towards guiding a reader on how to approach this problem ( or at least the way i did), rather than just telling you the flags!<br>
+<b>Challenge link</b>: [https://tryhackme.com/room/anthem](https://tryhackme.com/room/anthem)
 ## IP address
 10.10.36.112<br>
 <b>NOTE</b>: The challenge description clearly states: 
@@ -124,7 +125,7 @@ For the last one, it's hard but you the power of meta !
 ### RDP 
 Fairly staright forward.
 
-While logging in, remmeber you bases, short names are good and a strong enumeration goes long way!!!
+While logging in, remember you bases, short names are good and a strong enumeration goes long way!!!
 
 Other than that be "aware" of playing with file oermissions and maybe read up on your icacls.
 	
